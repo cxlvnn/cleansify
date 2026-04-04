@@ -6,6 +6,8 @@ use App\Http\Requests\StoreRecitationRequest;
 use App\Http\Requests\UpdateRecitationRequest;
 use App\Models\Recitation;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RecitationController extends Controller
 {
@@ -30,10 +32,16 @@ class RecitationController extends Controller
      */
     public function store(StoreRecitationRequest $request)
     {
-        Recitation::create([
+        $path = $request->file('recitation')->store('recitations');
+
+        Auth::user()->recitations()->create([
             'name' => request('name'),
             'reciter_name' => request('reciter_name'),
+            'path' => $path
         ]);
+
+        $url = Storage::url($path);
+        dd($url);
 
         return (redirect('/recitations'));
     }

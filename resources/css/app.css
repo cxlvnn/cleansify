@@ -6,53 +6,40 @@
 @source '../**/*.js';
 
 @plugin "daisyui" {
-  themes: green-night --default;
+  themes: light --default;
 }
 
 @plugin "daisyui/theme" {
-  name: "green-night";
+  name: "light";
   default: false;
   prefersdark: true;
-  color-scheme: dark;
-
-  /* Base colors - very dark background with deep green undertones */
-  --color-base-100: oklch(12% 0.008 145);    /* Very dark base */
-  --color-base-200: oklch(15% 0.01 145);     /* Slightly lighter dark */
-  --color-base-300: oklch(18% 0.012 145);    /* For hover states */
-  --color-base-content: oklch(82% 0.012 145); /* Soft off-white with green tint */
-
-  /* Primary - deep muted green (not vibrant) */
-  --color-primary: oklch(45% 0.08 150);
-  --color-primary-content: oklch(92% 0.008 145);
-
-  /* Secondary - darker forest green */
-  --color-secondary: oklch(38% 0.07 148);
-  --color-secondary-content: oklch(90% 0.008 145);
-
-  /* Accent - olive green undertone */
-  --color-accent: oklch(50% 0.09 135);
-  --color-accent-content: oklch(93% 0.008 145);
-
-  /* Neutral - dark gray with green tint */
-  --color-neutral: oklch(28% 0.015 145);
-  --color-neutral-content: oklch(85% 0.01 145);
-
-  /* Status colors - softer for dark theme */
-  --color-info: oklch(62% 0.12 235);
-  --color-info-content: oklch(96% 0.008 235);
-  --color-success: oklch(55% 0.09 145);
-  --color-success-content: oklch(94% 0.008 145);
-  --color-warning: oklch(68% 0.12 75);
-  --color-warning-content: oklch(14% 0.02 75);
-  --color-error: oklch(55% 0.18 20);
-  --color-error-content: oklch(96% 0.008 20);
-
-  /* Border radius settings */
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0 0);
+  --color-base-200: oklch(20% 0 0);
+  --color-base-300: oklch(26% 0 0);
+  --color-base-content: oklch(97% 0 0);
+  --color-primary: oklch(79% 0.209 151.711);
+  --color-primary-content: oklch(26% 0.065 152.934);
+  --color-secondary: oklch(70% 0.165 254.624);
+  --color-secondary-content: oklch(28% 0.091 267.935);
+  --color-accent: oklch(70% 0.191 22.216);
+  --color-accent-content: oklch(25% 0.092 26.042);
+  --color-neutral: oklch(20% 0 0);
+  --color-neutral-content: oklch(98% 0 0);
+  --color-info: oklch(58% 0.158 241.966);
+  --color-info-content: oklch(97% 0.013 236.62);
+  --color-success: oklch(64% 0.2 131.684);
+  --color-success-content: oklch(98% 0.031 120.757);
+  --color-warning: oklch(68% 0.162 75.834);
+  --color-warning-content: oklch(98% 0.026 102.212);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(97% 0.013 17.38);
   --radius-selector: 0.5rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.75rem;
-
-  /* Effects - subtle depth */
-  --depth: 0.8;
+  --radius-field: 0rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
   --noise: 0;
 }

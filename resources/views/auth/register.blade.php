@@ -1,10 +1,10 @@
 <x-layout>
 <div class="max-w-md mx-auto bg-base-100 rounded-box shadow-md overflow-hidden p-6">
-  <form class="space-y-4" method="POST" action="/recitations" enctype="multipart/form-data">
+  <form class="space-y-4" method="POST" action="/register" enctype="multipart/form-data">
     @csrf
     <div>
       <label for="name" class="block text-sm font-medium text-base-content mb-1">
-        Surah name
+        Name
       </label>
       <input
         type="text"
@@ -12,38 +12,42 @@
         name="name"
         required
         class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-        placeholder="Enter surah name"
+        placeholder="Enter your name"
       />
     </div>
+
     <div>
       <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
-        Reciter's name
+        Email
       </label>
       <input
-        type="text"
-        id="reciter_name"
-        name="reciter_name"
+        type="email"
+        id="email"
+        name="email"
         required
         class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-        placeholder="Enter reciter's name"
+        placeholder="Enter your email"
       />
     </div>
+
     <div>
-      <label for="recitation" class="block text-sm font-medium text-base-content mb-1">
-        Recitation
+      <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
+        Password
       </label>
       <input
-        type="file"
-        id="recitation"
-        name="recitation"
+        type="password"
+        id="password"
+        name="password"
         required
-        class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary file:mr-4 file:py-2 file:px-4 file:rounded-field file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-content hover:file:bg-primary/90"
+        class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+        placeholder="Enter your password"
       />
     </div>
+
     <button
       type="submit"
       class="w-full btn bg-primary text-primary-content py-3 px-4 rounded-field hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100 transition-colors">
-      Upload
+      Sign Up
     </button>
   </form>
 </div>
