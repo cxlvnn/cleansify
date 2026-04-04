@@ -5,7 +5,54 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+@plugin "daisyui" {
+  themes: green-night --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "green-night";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Base colors - very dark background with deep green undertones */
+  --color-base-100: oklch(12% 0.008 145);    /* Very dark base */
+  --color-base-200: oklch(15% 0.01 145);     /* Slightly lighter dark */
+  --color-base-300: oklch(18% 0.012 145);    /* For hover states */
+  --color-base-content: oklch(82% 0.012 145); /* Soft off-white with green tint */
+
+  /* Primary - deep muted green (not vibrant) */
+  --color-primary: oklch(45% 0.08 150);
+  --color-primary-content: oklch(92% 0.008 145);
+
+  /* Secondary - darker forest green */
+  --color-secondary: oklch(38% 0.07 148);
+  --color-secondary-content: oklch(90% 0.008 145);
+
+  /* Accent - olive green undertone */
+  --color-accent: oklch(50% 0.09 135);
+  --color-accent-content: oklch(93% 0.008 145);
+
+  /* Neutral - dark gray with green tint */
+  --color-neutral: oklch(28% 0.015 145);
+  --color-neutral-content: oklch(85% 0.01 145);
+
+  /* Status colors - softer for dark theme */
+  --color-info: oklch(62% 0.12 235);
+  --color-info-content: oklch(96% 0.008 235);
+  --color-success: oklch(55% 0.09 145);
+  --color-success-content: oklch(94% 0.008 145);
+  --color-warning: oklch(68% 0.12 75);
+  --color-warning-content: oklch(14% 0.02 75);
+  --color-error: oklch(55% 0.18 20);
+  --color-error-content: oklch(96% 0.008 20);
+
+  /* Border radius settings */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.75rem;
+
+  /* Effects - subtle depth */
+  --depth: 0.8;
+  --noise: 0;
 }
