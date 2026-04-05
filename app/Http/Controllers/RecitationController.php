@@ -16,7 +16,10 @@ class RecitationController extends Controller
      */
     public function index()
     {
-        return view('player.index');
+        $paths = Recitation::pluck('path');
+        return view('player.index', [
+            'paths' => $paths
+        ]);
     }
 
     /**

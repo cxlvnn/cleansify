@@ -3,21 +3,23 @@
 use App\Http\Controllers\RecitationController;
 use App\Http\Controllers\Auth\UserRegisterController;
 use App\Http\Controllers\Auth\SessionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('player.index');
+    return 'home page';
 });
 
-Route::get('/recitations', [RecitationController::class, 'index']);
-Route::get('/recitations/upload', [RecitationController::class, 'create']);
-Route::post('/recitations', [RecitationController::class, 'store']);
+Route::middleware('auth')->group(function () {
+    Route::get('/recitations', [RecitationController::class, 'index']);
+    Route::get('/recitations/upload', [RecitationController::class, 'create']);
+    Route::post('/recitations', [RecitationController::class, 'store']);
+    Route::delete('/logout', [SessionController::class, 'destroy']);
+});
 
-Route::get('/register', [UserRegisterController::class, 'register']);
-Route::post('/register', [UserRegisterController::class, 'store']);
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [UserRegisterController::class, 'register']);
+    Route::post('/register', [UserRegisterController::class, 'store']);
 
-Route::get('/login', [SessionController::class, 'create']);
-Route::post('/login', [SessionController::class, 'store']);
-
-Route::delete('/logout', [SessionController::class, 'destroy']);
+    Route::get('/login', [SessionController::class, 'create'])->name('login');
+    Route::post('/login', [SessionController::class, 'store']);
+});
