@@ -30,6 +30,7 @@
         placeholder="Enter your password"
       />
     </div>
+    <x-error name='email'/>
 
     <button
       type="submit"

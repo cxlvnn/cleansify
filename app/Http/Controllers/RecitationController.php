@@ -40,9 +40,6 @@ class RecitationController extends Controller
             'path' => $path
         ]);
 
-        $url = Storage::url($path);
-        dd($url);
-
         return (redirect('/recitations'));
     }
 

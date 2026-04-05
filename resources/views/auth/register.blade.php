@@ -15,6 +15,7 @@
         placeholder="Enter your name"
       />
     </div>
+    <x-error name="name"/>
 
     <div>
       <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
@@ -29,6 +30,7 @@
         placeholder="Enter your email"
       />
     </div>
+    <x-error name="email"/>
 
     <div>
       <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
@@ -43,6 +45,7 @@
         placeholder="Enter your password"
       />
     </div>
+    <x-error name="password"/>
 
     <button
       type="submit"
