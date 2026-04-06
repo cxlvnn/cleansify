@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRecitationRequest;
 use App\Http\Requests\UpdateRecitationRequest;
 use App\Models\Recitation;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,9 +15,10 @@ class RecitationController extends Controller
      */
     public function index()
     {
-        $paths = Recitation::pluck('path');
+        $recitations = Recitation::all();
+
         return view('player.index', [
-            'paths' => $paths
+            'recitations' => $recitations,
         ]);
     }
 
@@ -40,10 +40,10 @@ class RecitationController extends Controller
         Auth::user()->recitations()->create([
             'name' => request('name'),
             'reciter_name' => request('reciter_name'),
-            'path' => $path
+            'path' => $path,
         ]);
 
-        return (redirect('/recitations'));
+        return redirect('/recitations');
     }
 
     /**

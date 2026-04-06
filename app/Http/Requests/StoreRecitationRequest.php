@@ -28,8 +28,8 @@ class StoreRecitationRequest extends FormRequest
             'reciter_name' => 'required',
             'recitation' => [
                 'required',
-                File::types('mp3', 'wav')->max(200 * 1024)
-            ]
+                File::types('mp3', 'wav'),
+            ],
         ];
     }
 }
