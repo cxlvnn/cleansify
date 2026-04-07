@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class UpdateRecitationRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class UpdateRecitationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +24,12 @@ class UpdateRecitationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'reciter_name' => 'required',
+            'recitation' => [
+                'sometimes',
+                File::types('mp3', 'wav')->max('100mb'),
+            ],
         ];
     }
 }

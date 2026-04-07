@@ -6,6 +6,7 @@ use App\Http\Requests\StoreRecitationRequest;
 use App\Http\Requests\UpdateRecitationRequest;
 use App\Models\Recitation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class RecitationController extends Controller
@@ -15,7 +16,7 @@ class RecitationController extends Controller
      */
     public function index()
     {
-        $recitations = Recitation::all();
+        $recitations = Recitation::where('user_id', Auth::id())->get();
 
         return view('player.index', [
             'recitations' => $recitations,
@@ -36,7 +37,6 @@ class RecitationController extends Controller
     public function store(StoreRecitationRequest $request)
     {
         $path = $request->file('recitation')->store('recitations');
-
         Auth::user()->recitations()->create([
             'name' => request('name'),
             'reciter_name' => request('reciter_name'),
@@ -47,19 +47,12 @@ class RecitationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Recitation $recitation)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Recitation $recitation)
     {
-        //
+        Gate::authorize('viewOrModify', $recitation);
+        return view('player.edit', ['recitation' => $recitation]);
     }
 
     /**
@@ -67,7 +60,18 @@ class RecitationController extends Controller
      */
     public function update(UpdateRecitationRequest $request, Recitation $recitation)
     {
-        //
+        Gate::authorize('viewOrModify', $recitation);
+        $recitation->name = request('name');
+        $recitation->reciter_name = request('reciter_name');
+        if ($request->hasFile('recitation')) {
+            Storage::delete($recitation->path);
+            $request->file('recitation')->store('recitations');
+        }
+        $path = $request->file('recitation')->store('recitations');
+        $recitation->path = $path;
+        $recitation->save();
+
+        return redirect('/recitations');
     }
 
     /**
@@ -75,6 +79,10 @@ class RecitationController extends Controller
      */
     public function destroy(Recitation $recitation)
     {
-        //
+        Gate::authorize('viewOrModify', $recitation);
+        Storage::delete($recitation->path);
+        $recitation->deleteOrFail();
+
+        return redirect('/recitations');
     }
 }
