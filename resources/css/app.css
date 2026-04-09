@@ -43,3 +43,12 @@
   --depth: 0;
   --noise: 0;
 }
+
+#volume-slider::-webkit-slider-runnable-track {
+  background: #27272a; /* zinc-800 */
+  border-radius: 999px;
+  height: 4px;
+}
+#volume-slider::-webkit-slider-thumb {
+  margin-top: -6px; /* Center the thumb */
+}

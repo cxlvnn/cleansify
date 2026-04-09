@@ -139,7 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
         loadTrack(prevIndex);
     });
 
-    audio.addEventListener("ended", () => loadTrack(getNextIndex()));
+    audio.addEventListener("ended", () => {
+        if (isRepeat) {
+            audio.currentTime = 0; // Reset to start
+            audio.play(); // Play again immediately
+        } else {
+            loadTrack(getNextIndex()); // Go to next/shuffle track
+        }
+    });
 
     shuffleBtn.addEventListener("click", () => {
         isShuffle = !isShuffle;

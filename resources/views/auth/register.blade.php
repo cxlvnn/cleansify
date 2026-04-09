@@ -1,57 +1,51 @@
 <x-layout>
-<div class="max-w-md mx-auto bg-base-100 rounded-box shadow-md overflow-hidden p-6">
-  <form class="space-y-4" method="POST" action="/register" enctype="multipart/form-data">
-    @csrf
-    <div>
-      <label for="name" class="block text-sm font-medium text-base-content mb-1">
-        Name
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-        placeholder="Enter your name"
-      />
-    </div>
-    <x-error name="name"/>
+  <div class="bg-base-100 rounded-box mx-auto max-w-md overflow-hidden p-6 shadow-md">
+    <form class="space-y-4" method="POST" action="/register" enctype="multipart/form-data">
+      @csrf
 
-    <div>
-      <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
-        Email
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-        placeholder="Enter your email"
-      />
-    </div>
-    <x-error name="email"/>
+      <div class="border-base-200 mb-6 space-y-2 border-b pb-2 text-center">
+        <h1 class="from-primary to-secondary text-primary bg-clip-text text-2xl font-bold">
+          Create Account
+        </h1>
+        <p class="text-base-content/70 text-sm">
+          Start uploading your favorite recitations
+        </p>
+      </div>
 
-    <div>
-      <label for="reciter_name" class="block text-sm font-medium text-base-content mb-1">
-        Password
-      </label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        required
-        class="w-full px-3 py-2 bg-base-200 border border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-        placeholder="Enter your password"
-      />
-    </div>
-    <x-error name="password"/>
+      <div>
+        <label for="name" class="text-base-content mb-1 block text-sm font-medium">
+          Name
+        </label>
+        <input type="text" id="name" name="name" required
+          class="bg-base-200 border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:ring-primary focus:border-primary w-full border px-3 py-2 focus:outline-none focus:ring-2"
+          placeholder="Enter your name" />
+      </div>
+      <x-error name="name" />
 
-    <button
-      type="submit"
-      class="w-full btn bg-primary text-primary-content py-3 px-4 rounded-field hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100 transition-colors">
-      Sign Up
-    </button>
-  </form>
-</div>
+      <div>
+        <label for="reciter_name" class="text-base-content mb-1 block text-sm font-medium">
+          Email
+        </label>
+        <input type="email" id="email" name="email" required
+          class="bg-base-200 border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:ring-primary focus:border-primary w-full border px-3 py-2 focus:outline-none focus:ring-2"
+          placeholder="Enter your email" />
+      </div>
+      <x-error name="email" />
+
+      <div>
+        <label for="reciter_name" class="text-base-content mb-1 block text-sm font-medium">
+          Password
+        </label>
+        <input type="password" id="password" name="password" required
+          class="bg-base-200 border-base-300 text-base-content placeholder-base-content/50 rounded-field focus:ring-primary focus:border-primary w-full border px-3 py-2 focus:outline-none focus:ring-2"
+          placeholder="Enter your password" />
+      </div>
+      <x-error name="password" />
+
+      <button type="submit"
+        class="btn bg-primary text-primary-content rounded-field hover:bg-primary/90 focus:ring-primary focus:ring-offset-base-100 w-full px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2">
+        Sign Up
+      </button>
+    </form>
+  </div>
 </x-layout>

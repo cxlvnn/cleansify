@@ -38,6 +38,7 @@ class RecitationController extends Controller
     {
         $path = $request->file('recitation')->store('recitations');
         Auth::user()->recitations()->create([
+
             'name' => request('name'),
             'reciter_name' => request('reciter_name'),
             'path' => $path,
@@ -65,10 +66,8 @@ class RecitationController extends Controller
         $recitation->reciter_name = request('reciter_name');
         if ($request->hasFile('recitation')) {
             Storage::delete($recitation->path);
-            $request->file('recitation')->store('recitations');
+            $recitation->path = $request->file('recitation')->store('recitations');
         }
-        $path = $request->file('recitation')->store('recitations');
-        $recitation->path = $path;
         $recitation->save();
 
         return redirect('/recitations');

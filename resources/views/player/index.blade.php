@@ -81,73 +81,62 @@
   </div>
   </div>
 
-  <div id="master-player"
-    class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transform border-t border-zinc-800 bg-zinc-900/95 backdrop-blur-xl transition-transform duration-300 ease-out">
-    <audio id="global-audio" preload="metadata"></audio>
+<div id="master-player"
+  class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transform border-t border-zinc-800 bg-zinc-900/95 backdrop-blur-xl transition-transform duration-300 ease-out pb-safe">
+  <audio id="global-audio" preload="metadata"></audio>
 
-    <div class="mx-auto grid max-w-4xl grid-cols-12 items-center gap-4 px-6 py-4">
+  <div class="mx-auto max-w-4xl px-4 py-3 sm:px-6">
+    <div class="flex flex-col gap-3 sm:grid sm:grid-cols-12 sm:items-center sm:gap-4">
 
-      <div class="col-span-3 flex min-w-0 flex-col">
-        <span id="active-title" class="truncate font-medium text-white">Title</span>
-        <span id="active-reciter" class="truncate text-sm text-zinc-400">Reciter</span>
+      <div class="flex items-center gap-3 sm:col-span-3 min-w-0">
+        <div class="flex min-w-0 flex-col">
+          <span id="active-title" class="truncate font-medium text-white text-sm sm:text-base">Title</span>
+          <span id="active-reciter" class="truncate text-xs text-zinc-400">Reciter</span>
+        </div>
       </div>
 
-      <div class="col-span-6 flex flex-col items-center gap-1">
-        <div class="flex items-center gap-5">
-          <button id="master-shuffle" class="text-zinc-400 transition-colors hover:text-white" title="Toggle Shuffle">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 4l5 5m11-5l-5 5M4 20l5-5m11 5l-5-5M16 4h4v4M16 20h4v-4M4 4l16 16" />
-            </svg>
+      <div class="flex flex-col items-center gap-2 sm:col-span-6">
+        <div class="flex w-full items-center justify-between px-4 sm:justify-center sm:gap-6 sm:px-0">
+
+          <button id="master-shuffle" class="text-zinc-400 transition-colors hover:text-white sm:order-1" title="Toggle Shuffle">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l5 5m11-5l-5 5M4 20l5-5m11 5l-5-5M16 4h4v4M16 20h4v-4M4 4l16 16" /></svg>
           </button>
 
-          <button id="master-prev" class="text-zinc-400 transition-colors hover:text-white" title="Previous">
-            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-            </svg>
-          </button>
+          <div class="flex items-center gap-6 sm:order-2 sm:gap-5">
+            <button id="master-prev" class="text-zinc-400 transition-colors hover:text-white" title="Previous">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" /></svg>
+            </button>
 
-          <button id="master-play-btn"
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-black transition-all hover:bg-emerald-600 focus:outline-none">
-            <svg id="m-play-icon" class="h-5 w-5 fill-current" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <svg id="m-pause-icon" class="hidden h-5 w-5 fill-current" viewBox="0 0 24 24">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-            </svg>
-          </button>
+            <button id="master-play-btn" class="flex h-12 w-12 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-emerald-500 text-black transition-all hover:scale-105 active:scale-95">
+              <svg id="m-play-icon" class="h-6 w-6 sm:h-5 sm:w-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+              <svg id="m-pause-icon" class="hidden h-6 w-6 sm:h-5 sm:w-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+            </button>
 
-          <button id="master-next" class="text-zinc-400 transition-colors hover:text-white" title="Next">
-            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-            </svg>
-          </button>
-
-          <button id="master-repeat" class="text-zinc-400 transition-colors hover:text-white" title="Repeat Track">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="flex w-full items-center gap-3 font-mono text-xs text-zinc-400">
-          <span id="m-current-time" class="min-w-[65px] text-right">0:00</span>
-          <div id="m-progress-container" class="group relative h-1.5 flex-1 cursor-pointer rounded-full bg-zinc-700">
-            <div id="m-progress-bar"
-              class="absolute h-full w-0 rounded-full bg-emerald-500 transition-all duration-100"></div>
+            <button id="master-next" class="text-zinc-400 transition-colors hover:text-white" title="Next">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" /></svg>
+            </button>
           </div>
-          <span id="m-total-duration" class="min-w-[65px] text-left">0:00</span>
+
+          <button id="master-repeat" class="text-zinc-400 transition-colors hover:text-white sm:order-3" title="Toggle Repeat">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          </button>
+        </div>
+
+        <div class="flex w-full items-center gap-3">
+          <span id="m-current-time" class="w-8 text-right text-[10px] tabular-nums text-zinc-500">0:00</span>
+          <div id="m-progress-container" class="relative h-1.5 flex-1 cursor-pointer rounded-full bg-zinc-800">
+            <div id="m-progress-bar" class="absolute h-full w-0 rounded-full bg-emerald-500"></div>
+          </div>
+          <span id="m-total-duration" class="w-8 text-left text-[10px] tabular-nums text-zinc-500">0:00</span>
         </div>
       </div>
 
-      <div class="col-span-3 flex items-center justify-end gap-2">
-        <svg class="h-4 w-4 text-zinc-400" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5 17h4l5 5V2l-5 5H5v10zm14-5c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
-        </svg>
-        <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.75"
-          class="h-1 w-20 cursor-pointer appearance-none rounded-lg bg-zinc-700 accent-emerald-500">
+      <div class="hidden sm:col-span-3 sm:flex items-center justify-end gap-2">
+        <svg class="h-5 w-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
+        <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="1"
+          class="h-1 w-24 cursor-pointer appearance-none rounded-full bg-zinc-800 accent-emerald-500" />
       </div>
     </div>
   </div>
+</div>
 </x-layout>
