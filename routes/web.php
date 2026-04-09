@@ -6,7 +6,7 @@ use App\Http\Controllers\RecitationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'home page';
+    return view('welcome');
 });
 
 Route::middleware('auth')->group(function () {
@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [UserRegisterController::class, 'register']);
+    Route::get('/register', [UserRegisterController::class, 'register'])->name('register');
     Route::post('/register', [UserRegisterController::class, 'store']);
 
     Route::get('/login', [SessionController::class, 'create'])->name('login');

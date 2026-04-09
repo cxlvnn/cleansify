@@ -46,6 +46,9 @@
         class="btn bg-primary text-primary-content rounded-field hover:bg-primary/90 focus:ring-primary focus:ring-offset-base-100 w-full px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2">
         Sign Up
       </button>
+    <div>
+        <p>Already have an account? <a href="/login">Login from here</a></p>
+    </div>
     </form>
   </div>
 </x-layout>
