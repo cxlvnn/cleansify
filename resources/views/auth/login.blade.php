@@ -8,7 +8,7 @@
           Welcome back
         </h1>
         <p class="text-base-content/70 text-sm">
-            Sign in to continue your journey
+          Sign in to continue your journey
         </p>
       </div>
 

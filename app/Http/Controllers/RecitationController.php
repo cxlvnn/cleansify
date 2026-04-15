@@ -31,6 +31,7 @@ class RecitationController extends Controller
         return view('player.upload');
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -38,7 +39,6 @@ class RecitationController extends Controller
     {
         $path = $request->file('recitation')->store('recitations');
         Auth::user()->recitations()->create([
-
             'name' => request('name'),
             'reciter_name' => request('reciter_name'),
             'path' => $path,
@@ -53,6 +53,7 @@ class RecitationController extends Controller
     public function edit(Recitation $recitation)
     {
         Gate::authorize('viewOrModify', $recitation);
+
         return view('player.edit', ['recitation' => $recitation]);
     }
 
